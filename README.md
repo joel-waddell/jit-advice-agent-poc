@@ -8,7 +8,7 @@ Open [index.html](index.html) in a modern browser. No install or build step is r
 
 ## Deploy to GitHub Pages
 
-The `Deploy to GitHub Pages` workflow publishes `index.html` and `llm.js` whenever changes are pushed to `main`, or when manually started from the Actions tab. In the repository settings, set **Pages → Build and deployment → Source** to **GitHub Actions**. After the first successful workflow run, the site will be available at `https://joel-waddell.github.io/jit-advice-agent-poc/`.
+The `Deploy to GitHub Pages` workflow enables GitHub Pages with GitHub Actions and publishes `index.html` and `llm.js` whenever changes are pushed to `main`, or when manually started from the Actions tab. After the first successful workflow run, the site will be available at `https://joel-waddell.github.io/jit-advice-agent-poc/`. If repository or organization policies prevent automatic enablement, an administrator must enable Pages in the repository settings.
 
 ## Integration tiers
 
