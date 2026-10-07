@@ -8,7 +8,9 @@ Open [index.html](index.html) in a modern browser. No install or build step is r
 
 ## Deploy to GitHub Pages
 
-The `Deploy to GitHub Pages` workflow enables GitHub Pages with GitHub Actions and publishes `index.html` and `llm.js` whenever changes are pushed to `main`, or when manually started from the Actions tab. After the first successful workflow run, the site will be available at `https://joel-waddell.github.io/jit-advice-agent-poc/`. If repository or organization policies prevent automatic enablement, an administrator must enable Pages in the repository settings.
+Before the first deployment, a repository administrator must open **Settings → Pages** and select **GitHub Actions** under **Build and deployment → Source**. The workflow's `GITHUB_TOKEN` can deploy to an existing Pages site, but cannot enable Pages automatically. If Pages is unavailable, an administrator must resolve any repository eligibility or organization policy restrictions.
+
+The `Deploy to GitHub Pages` workflow publishes `index.html` and `llm.js` whenever changes are pushed to `main`, or when manually started from the Actions tab. After completing the setup and merging workflow changes to `main`, start a new run from the Actions tab. After the first successful workflow run, the site will be available at `https://joel-waddell.github.io/jit-advice-agent-poc/`.
 
 ## Integration tiers
 
@@ -44,7 +46,8 @@ Run the adapter unit tests and JavaScript syntax check with Node.js:
 
 ```sh
 node --test llm.test.js
+node --test pages.test.js
 node --check llm.js
 ```
 
-These tests mock network responses; they do not verify a live provider connection or the UI in a browser.
+The adapter tests mock network responses; the Pages regression test checks workflow configuration. These tests do not verify a live provider connection, a live Pages deployment, or the UI in a browser.
