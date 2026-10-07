@@ -25,6 +25,9 @@ jobs:
         uses: actions/checkout@v4
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
+        with:
+          token: ${{ secrets.PAGES_SETUP_TOKEN || github.token }}
+          enablement: ${{ secrets.PAGES_SETUP_TOKEN != '' }}
       - name: Prepare site
         run: |
           mkdir public
