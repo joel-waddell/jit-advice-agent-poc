@@ -10,6 +10,8 @@ Open [index.html](index.html) in a modern browser. No install or build step is r
 
 The `Deploy to GitHub Pages` workflow publishes `index.html` and `llm.js` whenever changes are pushed to `main`, or when manually started from the Actions tab. In the repository settings, set **Pages → Build and deployment → Source** to **GitHub Actions**. After the first successful workflow run, the site will be available at `https://joel-waddell.github.io/jit-advice-agent-poc/`.
 
+If the deploy job fails at **Configure GitHub Pages** with **Not Found**, Pages has not been enabled. Complete the settings step above, then rerun the workflow. Alternatively, to let the workflow enable Pages, add an Actions repository secret named `PAGES_ENABLEMENT_TOKEN` containing a fine-grained personal access token with **Pages: write** permission for this repository (or a GitHub App token with **Administration: write** and **Pages: write**). The default `GITHUB_TOKEN` cannot enable Pages, even with `pages: write`. Without the optional secret, the workflow uses `GITHUB_TOKEN` and requires Pages to be enabled manually. Once Pages is enabled, remove the optional secret; normal deployments do not need it.
+
 ## Integration tiers
 
 - **Tier 1 · Bolt-On:** The external advisor sees no form data until you select **Read screen**. Recommendations must be transferred to the form manually.
