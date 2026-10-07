@@ -10,6 +10,10 @@ Open [index.html](index.html) in a modern browser. No install or build step is r
 
 Before the first deployment, a repository administrator must open **Settings → Pages** and select **GitHub Actions** under **Build and deployment → Source**. The workflow's `GITHUB_TOKEN` can deploy to an existing Pages site, but cannot enable Pages automatically. If Pages is unavailable, an administrator must resolve any repository eligibility or organization policy restrictions.
 
+Alternatively, an administrator can add a repository Actions secret named `PAGES_SETUP_TOKEN` containing a fine-grained personal access token restricted to this repository with **Pages: Read and write** permission. The token owner must have permission to manage the repository's Pages settings. The workflow uses this token only in `Configure GitHub Pages` and enables the site only when the secret is present; artifact upload and deployment continue to use `GITHUB_TOKEN`. Remove the secret and revoke the setup token after successful setup.
+
+If `Configure GitHub Pages` fails with `Get Pages site failed` / `Not Found`, the site is missing or inaccessible to the token. Complete one of the setup options above before starting a new run; rerunning without resolving the Pages configuration will fail again.
+
 The `Deploy to GitHub Pages` workflow publishes `index.html` and `llm.js` whenever changes are pushed to `main`, or when manually started from the Actions tab. After completing the setup and merging workflow changes to `main`, start a new run from the Actions tab. After the first successful workflow run, the site will be available at `https://joel-waddell.github.io/jit-advice-agent-poc/`.
 
 ## Integration tiers
